@@ -65,28 +65,48 @@
 
   <h1>Cadastro de Clientes</h1>
 
-  <div id="areaEdicao">
-  <form id="clienteForm">
+  <div id="areaEdicao" hidden>
+ <!-- <form id="clienteForm"> -->
     <input type="hidden" id="id" />
-    <input type="text" id="nome" placeholder="Nome"/>
+
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome" placeholder="Nome" required/>
+
+    <label for="endereco">Endereço:</label><br>
     <input type="text" id="endereco" placeholder="Endereço"/>
+
+    <label for="cidade">Cidade:</label><br>
     <input type="text" id="cidade" placeholder="Cidade"  />
+
+    <label for="nome">UF:</label><br>
     <input type="text" id="uf" placeholder="UF" />
+
+    <label for="cep">CEP:</label><br>
     <input type="text" id="cep" placeholder="CEP" />
+
+    <label for="email">eMail:</label><br>
     <input type="email" id="email" placeholder="Email" />
+
+        
+    <label for="telefone">Telefone:</label><br>
     <input type="text" id="telefone" placeholder="Telefone" />
+
+    <label for="valorcredito">Valor do Crédito:</label><br>
     <input type="text" id="valorcredito" placeholder="Valor do Crédito" />
+    <
 
     <div class="container-botoes">
-        <button type="submit">Salvar</button>
+        <!-- <button type="submit">Salvar</button> -->
+
+        <button onclick="salvarCliente(1)">Salvar</button>
         <button onclick="ocultarFormulario()">Cancelar</button>
     </div>
-  </form>
+   <!-- </form> -->
   </div>
 
   <div id="areaLista">
     <div class="header-com-botao">
-        <h2>Lista de Clientes</h2>
+        <h2>Lista Completa de Clientes</h2>
         <button id="btnteste" onclick="novoCliente()">Inclusão</button>
     </div>
   
@@ -134,10 +154,9 @@
       }
 
       async function salvarCliente(e) {
-          //if (criticaCliente()) {
-
+          if (criticaCliente()) {
           
-            e.preventDefault();
+            //e.preventDefault();
 
             // Cria json com os dados a seren enviados
 
@@ -179,12 +198,12 @@
             body: JSON.stringify(data),
             });
 
-            document.getElementById("clienteForm").reset();
+            // document.getElementById("clienteForm").reset();
 
             // Recarrega a Grade a tela
             ocultarFormulario();
             carregarClientes();
-       //}
+       }
       }
 
       async function editarCliente(id) {
@@ -219,18 +238,12 @@
       function exibirFormulario() {
 
         document.getElementById("areaEdicao").hidden = false
-        //document.getElementById("areaLista").hidden = true
-        //const areaEdicao = document.getElementById("areaEdicao")
-        //areaEdicao.hidden = false
-
+        document.getElementById("areaLista").hidden = true
       }
 
       function ocultarFormulario() {
         document.getElementById("areaEdicao").hidden = true
-        //document.getElementById("areaLista").hidden = false
-
-        //const areaEdicao = document.getElementById("areaEdicao")
-        //areaEdicao.hidden = true
+        document.getElementById("areaLista").hidden = false
       }
 
       function limparCamposFormulario() {
@@ -247,7 +260,7 @@
       }
 
       function novoCliente() {
-        //limparCamposFormulario();
+        limparCamposFormulario();
         document.getElementById("id").value = 0;
         exibirFormulario();
       }
@@ -263,11 +276,11 @@
           }
           
           if (document.getElementById("cidade").value == "") {
-            alert("Nome do Cliente não fornecido.");
+            alert("Cidade do Cliente não fornecida.");
             return false;
           };
           if (document.getElementById("uf").value == "") {
-            alert("Nome do Cliente não fornecido.");
+            alert("UF do Cliente não fornecido.");
             return false;
           };
           if (document.getElementById("cep").value == "") {
@@ -290,7 +303,7 @@
 
       }
 
-      document.getElementById("clienteForm").addEventListener("submit", salvarCliente);
+      //document.getElementById("clienteForm").addEventListener("submit", salvarCliente);
       carregarClientes();
 
 
