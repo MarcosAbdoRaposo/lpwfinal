@@ -29,3 +29,27 @@ td {
     display: flex;
     gap: 10px;
 }
+
+/* Define o contêiner como um layout flexível */
+.container-botoes {
+    display: flex;
+    /* Adiciona um espaço entre os botões */
+    gap: 10px; 
+    /* Opcional: Centraliza os botões no contêiner */
+    justify-content: center; 
+}
+.header-com-botao {
+    /* 1. Ativa o Flexbox para alinhar os itens na mesma linha */
+    display: flex;
+    
+    /* 2. Alinha verticalmente os itens no centro (útil se o botão for menor que o H2) */
+    align-items: center; 
+    
+    /* 3. Distribui o espaço disponível entre e ao redor dos itens. */
+    /* 'space-between' empurra o H2 para a esquerda e o botão para a direita */
+    justify-content: space-between; 
+    
+    /* Opcional: Para visualizar o contêiner */
+    /* border-bottom: 1px solid #ccc; */
+    padding-bottom: 10px;
+}
